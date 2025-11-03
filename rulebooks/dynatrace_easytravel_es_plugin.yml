@@ -9,14 +9,13 @@
         # (Default is 1 min) i.e plugin runs every 1 minute
   rules:
     - name: Problem payload Dynatrace for App Failure rate increase issue
-      condition: event.status == "OPEN" and (event.title == "JavaScript error rate increase" or event.title == "Failure rate increase") and (event.impactedEntities[0].name == "BookingService" or event.impactedEntities[0].name == "EasytravelService")
+      condition: event.status == "ACTIVE" and event.name == "Failure rate increase"
       actions:
         - run_job_template:
             name: Dynatrace Easy Travel demo fix
             organization: Default
             job_args:
               extra_vars:
-                dt_easytravel_url: '{{ et_url }}'
                 dt_api_token: '{{ dt_token }}'
                 dt_api_url: '{{ dt_url }}'
         - debug:
