@@ -20,3 +20,8 @@
                 dt_api_url: '{{ dt_url }}'
         - debug:
         - print_event:
+    - name: Log event
+      condition: event.status == "ACTIVE"
+      actions:
+        - debug:
+        - print_event:
