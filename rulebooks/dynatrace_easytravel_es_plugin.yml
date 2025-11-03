@@ -18,7 +18,7 @@
               extra_vars:
                 dt_api_token: '{{ dt_token }}'
                 dt_api_url: '{{ dt_url }}'
-    - name: Problem payload Dynatrace for App Failure rate increase issue
+    - name: Problem payload Dynatrace for App Failure rate increase issue JS
       condition: event.payload.eventData["event.status"] is match ("ACTIVE") and event.payload.eventData["event.name"] is match ("JavaScript error rate increase")
       actions:
         - run_job_template:
