@@ -9,7 +9,7 @@
         # (Default is 1 min) i.e plugin runs every 1 minute
   rules:
     - name: Problem payload Dynatrace for App Failure rate increase issue
-      condition: event.status == "ACTIVE" and event.name == "Failure rate increase"
+      condition: event["event.status"] == "ACTIVE" and event["event.name"] == "Failure rate increase"
       actions:
         - run_job_template:
             name: Dynatrace Easy Travel demo fix
@@ -20,7 +20,4 @@
                 dt_api_url: '{{ dt_url }}'
         - debug:
         - print_event:
-    - name: Log event
-      actions:
-        - debug:
-        - print_event:
+
